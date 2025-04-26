@@ -1,0 +1,158 @@
+/* General Reset */
+
+body {
+    background-color: #A9A9A9;
+}
+
+* {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #e0dddd;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly; /* Better responsive layout */
+    align-items: center;
+    padding: 0px 2% 70px; /* Adjust padding to use percentages */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    
+}
+
+.nav-logo {
+    height: 60px;
+    width: 250px;
+}
+
+.logo {
+    background-image: url(../assets/logo.png);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.border {
+    border-bottom: 1px solid #0F1111;
+}
+
+.border:hover {
+    border-bottom: 2.9px solid black;
+}
+
+
+
+/* Cart Page Styles */
+.cart-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.cart-item h2 {
+    margin-bottom: 10px;
+}
+
+.remove-item {
+    background-color: plum;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-item:hover {
+    background-color: palevioletred;
+}
+
+/* Cart Summary */
+.cart-summary {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h2 {
+    margin-bottom: 15px;
+}
+
+.cart-summary p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.checkout-button {
+    background-color: plum;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkout-button:hover {
+    background-color: palevioletred;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cart-container {
+        width: 90%;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-item img {
+        margin-bottom: 10px;
+    }
+
+    .cart-summary {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Ambay Sweet Shop</title>
+    <link rel="stylesheet" href="cart-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <head>
+        <!-- navbar only -->
+        <div class="navbar">
+            <div class="nav-logo border">
+                <a href="../1page/index.html">
+                    <div class="logo"></div>
+                </a>
+            </div>
+        </div>
+    </head>
+
+    <main>
+        <div class="cart-container">
+            <h1>Your Cart</h1>
+            <div id="cart-items">
+                <!-- Cart items will be inserted here dynamically -->
+            </div>
+
+            <div class="cart-summary">
+                <h2>Cart Summary</h2>
+                <p id="total-items">Total Items: 0</p>
+                <p id="total-price">Total Price: ₹0</p>
+                <button class="checkout-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to render cart items
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalItems = document.getElementById('total-items');
+            const totalPrice = document.getElementById('total-price');
+            
+            cartItemsContainer.innerHTML = ''; // Clear cart items before rendering
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h2>${item.name}</h2>
+                        <p>Price: ₹${item.price}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                        <button class="remove-item" onclick="removeItem(${index})">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+
+                total += item.price * item.quantity;
+            });
+
+            totalItems.textContent = `Total Items: ${cart.length}`;
+            totalPrice.textContent = `Total Price: ₹${total}`;
+        }
+
+        // Remove an item from the cart
+        function removeItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Initial render of cart
+        renderCart();
+    </script>
+</body>
+</html>
